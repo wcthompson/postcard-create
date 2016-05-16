@@ -1,0 +1,44 @@
+{
+  "name": "postcard-create",
+  "version": "0.0.1",
+  "description": "Angular app skeleton to be forked and used for training",
+  "main": "app/index.js",
+  "scripts": {
+    "build": "browserify -o public/bundle.js app/index.js",
+    "lint": "eslint .",
+    "start": "beefy --live --index public/index.html app/index.js:bundle.js 8888"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lob/postcard-create.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lob/postcard-create/issues"
+  },
+  "homepage": "https://github.com/lob/postcard-create#readme",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-ui-router": "^0.3.0"
+  },
+  "devDependencies": {
+    "beefy": "^2.1.6",
+    "browserify": "^13.0.1",
+    "eslint": "^1.10.3",
+    "eslint-config-lob": "^1.0.1",
+    "sassify": "^0.10.0",
+    "stringify": "^5.1.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "sassify",
+        {
+          "auto-inject": true
+        }
+      ],
+      "stringify"
+    ]
+  }
+}
