@@ -27,6 +27,11 @@
       "from": "angular@latest",
       "resolved": "https://registry.npmjs.org/angular/-/angular-1.5.5.tgz"
     },
+    "angular-cookies": {
+      "version": "1.5.5",
+      "from": "angular-cookies@latest",
+      "resolved": "https://registry.npmjs.org/angular-cookies/-/angular-cookies-1.5.5.tgz"
+    },
     "angular-ui-router": {
       "version": "0.3.0",
       "from": "angular-ui-router@latest",

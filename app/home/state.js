@@ -5,6 +5,9 @@ var HTML = require('../views/home.html');
 module.exports = function ($stateProvider) {
   $stateProvider.state('home', {
     url: '/',
-    template: HTML
+    template: HTML,
+    data: {
+      authenticated: true
+    }
   });
 };
