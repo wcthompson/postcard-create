@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function ($stateProvider) {
-  $stateProvider
-  .state('logout', {
+
+  $stateProvider.state('logout', {
     url: '/logout',
     template: '<div></div>',
     controller: 'LogoutCtrl',
@@ -10,4 +10,5 @@ module.exports = function ($stateProvider) {
       authenticated: true
     }
   });
+
 };

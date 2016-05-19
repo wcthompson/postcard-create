@@ -3,8 +3,8 @@
 var HTML = require('../../views/account/login.html');
 
 module.exports = function ($stateProvider) {
-  $stateProvider
-  .state('login', {
+
+  $stateProvider.state('login', {
     url: '/login',
     template: HTML,
     controller: 'LoginCtrl',
@@ -12,4 +12,5 @@ module.exports = function ($stateProvider) {
       authenticated: false
     }
   });
+
 };

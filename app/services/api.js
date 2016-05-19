@@ -34,7 +34,7 @@ module.exports = function ($http, $q) {
     if (params instanceof FormData) {
       options.transformRequest = Angular.identity;
       options.headers = options.headers || {};
-      Angular.merge(options.headers, { 'Content-Type': undefined });
+      options.headers = Angular.merge({}, options.headers, { 'Content-Type': undefined });
     }
 
     return $http.post(url, params, options)
