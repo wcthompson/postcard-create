@@ -20,11 +20,13 @@
   "homepage": "https://github.com/lob/postcard-create#readme",
   "dependencies": {
     "angular": "^1.5.5",
+    "angular-cookies": "^1.5.5",
     "angular-ui-router": "^0.3.0"
   },
   "devDependencies": {
     "beefy": "^2.1.6",
     "browserify": "^13.0.1",
+    "envify": "^3.4.0",
     "eslint": "^1.10.3",
     "eslint-config-lob": "^1.0.1",
     "sassify": "^0.10.0",
@@ -38,7 +40,8 @@
           "auto-inject": true
         }
       ],
-      "stringify"
+      "stringify",
+      "envify"
     ]
   }
 }

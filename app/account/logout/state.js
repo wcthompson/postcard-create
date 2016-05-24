@@ -1,12 +1,11 @@
 'use strict';
 
-var HTML = require('../views/home.html');
-
 module.exports = function ($stateProvider) {
 
-  $stateProvider.state('home', {
-    url: '/',
-    template: HTML,
+  $stateProvider.state('logout', {
+    url: '/logout',
+    template: '<div></div>',
+    controller: 'LogoutCtrl',
     data: {
       authenticated: true
     }
