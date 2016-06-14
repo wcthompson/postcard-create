@@ -17,3 +17,11 @@ This app uses [Beefy](https://github.com/chrisdickinson/beefy) as a development 
 ```bash
 $ npm start
 ```
+
+## Testing
+
+This app uses [Karma](https://karma-runner.github.io/) as a test runner, and it uses [Mocha](https://mochajs.org/) as the testing framework. To run the tests, just run:
+
+```bash
+$ npm test
+```

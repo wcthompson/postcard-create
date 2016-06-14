@@ -3,5 +3,6 @@ machine:
     version: 6
 
 test:
-  override:
+  post:
+    - npm run enforce
     - npm run lint

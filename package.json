@@ -5,8 +5,10 @@
   "main": "app/index.js",
   "scripts": {
     "build": "browserify -o public/bundle.js app/index.js",
+    "enforce": "istanbul check-coverage --statement 100 --branch 100 --function 100 --lines 100",
     "lint": "eslint .",
-    "start": "beefy --live --index public/index.html app/index.js:bundle.js 8888"
+    "start": "beefy --live --index public/index.html app/index.js:bundle.js 8888",
+    "test": "NODE_ENV=test karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -24,13 +26,25 @@
     "angular-ui-router": "^0.3.0"
   },
   "devDependencies": {
+    "angular-mocks": "^1.5.6",
     "beefy": "^2.1.6",
     "browserify": "^13.0.1",
+    "browserify-istanbul": "^2.0.0",
+    "chai": "^3.5.0",
     "envify": "^3.4.0",
     "eslint": "^1.10.3",
     "eslint-config-lob": "^1.0.1",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.5",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-mocha": "^1.0.1",
+    "karma-spec-reporter": "0.0.26",
+    "mocha": "^2.5.3",
     "sassify": "^0.10.0",
-    "stringify": "^5.1.0"
+    "sinon": "^1.17.4",
+    "stringify": "^5.1.0",
+    "watchify": "^3.7.0"
   },
   "browserify": {
     "transform": [
