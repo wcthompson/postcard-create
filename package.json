@@ -7,7 +7,7 @@
     "build": "browserify -o public/bundle.js app/index.js",
     "enforce": "istanbul check-coverage --statement 100 --branch 100 --function 100 --lines 100",
     "lint": "eslint .",
-    "start": "beefy --live --index public/index.html app/index.js:bundle.js 8888",
+    "start": "beefy --live --index public/index.html --cwd public/ app/index.js:bundle.js 8888",
     "test": "NODE_ENV=test karma start --single-run"
   },
   "repository": {
