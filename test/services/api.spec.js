@@ -2,6 +2,7 @@
 
 var expect  = require('chai').expect;
 var Angular = require('angular');
+var Sinon   = require('sinon');
 
 var TIMEOUT_MESSAGE = 'Request timed out. Please contact us at support@lob.com.';
 var ERROR_MESSAGE   = 'Looks like something went wrong on our end. Please contact us at support@lob.com.';
@@ -14,12 +15,14 @@ describe('api service', function () {
   var $q;
   var $rootScope;
   var API;
+  var Session;
 
   beforeEach(Angular.mock.inject(function ($injector) {
     $httpBackend = $injector.get('$httpBackend');
     $q           = $injector.get('$q');
     $rootScope   = $injector.get('$rootScope');
     API          = $injector.get('API');
+    Session      = $injector.get('Session');
   }));
 
   describe('createError', function () {
@@ -90,6 +93,27 @@ describe('api service', function () {
       $httpBackend.flush();
     });
 
+    it('adds the session token in the header if it exists', function () {
+      var url = 'http://test.com';
+      var response = { test: 'banana' };
+      var token = 'token';
+
+      Sinon.stub(Session, 'token').returns(token);
+
+      $httpBackend.expect('GET', url, null, function (headers) {
+        return headers.Authorization === 'Bearer ' + token;
+      }).respond(200, response);
+
+      API.get(url)
+      .then(function (res) {
+        expect(res).to.eql(response);
+      });
+
+      $httpBackend.flush();
+
+      Session.token.restore();
+    });
+
   });
 
   describe('post', function () {
@@ -142,6 +166,27 @@ describe('api service', function () {
       });
 
       $httpBackend.flush();
+    });
+
+    it('adds the session token in the header if it exists', function () {
+      var url = 'http://test.com';
+      var response = { test: 'banana' };
+      var token = 'token';
+
+      Sinon.stub(Session, 'token').returns(token);
+
+      $httpBackend.expect('POST', url, null, function (headers) {
+        return headers.Authorization === 'Bearer ' + token;
+      }).respond(200, response);
+
+      API.post(url, null)
+      .then(function (res) {
+        expect(res).to.eql(response);
+      });
+
+      $httpBackend.flush();
+
+      Session.token.restore();
     });
 
   });

@@ -2,7 +2,7 @@
 
 var Angular = require('angular');
 
-module.exports = function ($http, $q) {
+module.exports = function ($http, $q, Session) {
 
   var API = {};
 
@@ -21,7 +21,13 @@ module.exports = function ($http, $q) {
   };
 
   API.get = function (url, params, timeout) {
-    return $http.get(url, { params: params, timeout: timeout })
+    var headers = {};
+
+    if (Session.token()) {
+      headers.Authorization = 'Bearer ' + Session.token();
+    }
+
+    return $http.get(url, { params: params, headers: headers, timeout: timeout })
     .then(function (res) {
       return res.data;
     })
@@ -35,6 +41,11 @@ module.exports = function ($http, $q) {
       options.transformRequest = Angular.identity;
       options.headers = options.headers || {};
       options.headers = Angular.merge({}, options.headers, { 'Content-Type': undefined });
+    }
+
+    if (Session.token()) {
+      options.headers = options.headers || {};
+      options.headers.Authorization = 'Bearer ' + Session.token();
     }
 
     return $http.post(url, params, options)
